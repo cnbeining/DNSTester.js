@@ -55,6 +55,11 @@ Misc
 
 欢迎提供托管。
 
+Github:
+
+    https://cnbeining.github.io/DNSTester.js/javascripts/dnstester.js
+    https://cnbeining.github.io/DNSTester.js/javascripts/dnstester-min.js
+
     legal disclaimer: Usage of DNSTester.js for attacking targets without prior mutual consent
     is illegal. It is the end user's responsibility to obey all applicable local, state and
     federal laws. Developers assume no liability and are not responsible for any misuse or
