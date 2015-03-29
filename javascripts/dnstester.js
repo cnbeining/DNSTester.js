@@ -1,5 +1,5 @@
 /*!
- * DNSTester.js 0.0.1
+ * DNSTester.js 0.0.2
  * https://github.com/cnbeining/DNSTester.js
  * http://www.cnbeining.com/
  *
@@ -12,7 +12,7 @@
  *
  */
 document.write("<script src='http://libs.baidu.com/jquery/2.0.0/jquery.min.js'>\x3c/script>");
-!window.jQuery && document.write("<script src='http://code.jquery.com/jquery-latest.js'>\x3c/script>");
+!window.jQuery && document.write("<script src='//code.jquery.com/jquery-latest.js'>\x3c/script>"); //In casse HTTPS
 startime = (new Date).getTime();
 var count = 0;
 function unixtime() {
