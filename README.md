@@ -38,7 +38,7 @@ Simple.
 License
 -----
 
-GNUv2 license.
+GPLv2 license.
 
 This program is provided **as is**, with absolutely no warranty.
 
