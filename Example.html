@@ -9,9 +9,10 @@
         <script  type="text/javascript">
             function start_test()
             {
-                var DOMAIN = document.getElementById('site').value;
-                var MAX_COUNT = parseInt(document.getElementById('max_time').value);
-                var TPS = parseInt(document.getElementById('time_per_sec').value);
+                DOMAIN = document.getElementById('site').value;
+                MAX_COUNT = parseInt(document.getElementById('max_time').value);
+                //console.log(MAX_COUNT);
+                TPS = parseInt(document.getElementById('time_per_sec').value);
                 var timegap = 1000 * (1 / TPS);
                 r_send(timegap);
                 update_id = setInterval("update_counter()", 1E3)
@@ -30,8 +31,8 @@
         <h1>DNSTester.js 演示</h1>
 		<p>
 			为了节省资源，很简陋。请参考<a href="https://github.com/cnbeining/DNSTester.js">Github页面</a>以获取源码和<a href="https://github.com/cnbeining/DNSTester.js#misc">注意事项</a>。<br />
-			频率/秒: <input id="time_per_sec" type="text" value="50" /><br />
-			次数: <input id="max_time" type="text" value="10000" /><br />
+			频率/秒: <input id="time_per_sec" type="text" value="5" /><br />
+			次数: <input id="max_time" type="text" value="10" /><br />
 			网站: <input id="site" type="text" value=".baidu.com/" /><br />
 			<br />
 			点击下面的按钮开始测试：<br />
