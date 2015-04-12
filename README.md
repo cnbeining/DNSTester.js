@@ -26,11 +26,16 @@ Simple.
         <script src='***' type="text/javascript"></script> 
     </head>
     
+    My host on Cloudflare with Github Pages as backend is avalable at the very end of this page.
+    
     And call with:
     
     <script  type="text/javascript">
-        var DOMAIN = ".baidu.com/"; //Change to the domain you want to test
-        setTimeout("r_send2()", 1E-2); //Speed
+        var DOMAIN = ".baidu.com/"; // Change to this form
+        var MAX_COUNT = 5000; // Max time of hit
+        var TPS = 50; // Frequency
+        timegap = 1 / TPS; // Reciprocal, in case you have not finish grade 6
+        setTimeout("r_send()", timegap);
     </script>
 
 
@@ -48,6 +53,10 @@ jQuery is included in DNSTester.js. Check http://jquery.com/ for more details.
 History
 ----
 
+0.0.3: Rewrite name generate; Add time control; Rewrite callback; Update Address
+
+0.0.2: Fix load with HTTPS
+
 0.0.1: The start of this.
 
 Misc
@@ -59,6 +68,11 @@ Github:
 
     https://cnbeining.github.io/DNSTester.js/javascripts/dnstester.js
     https://cnbeining.github.io/DNSTester.js/javascripts/dnstester-min.js
+
+Cloudflare(Github Pages as backend):
+
+    https://gfwsuckmydick.science/javascripts/dnstester.js
+    https://gfwsuckmydick.science/javascripts/dnstester-min.js
 
     legal disclaimer: Usage of DNSTester.js for attacking targets without prior mutual consent
     is illegal. It is the end user's responsibility to obey all applicable local, state and
