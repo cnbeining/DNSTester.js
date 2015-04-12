@@ -1,37 +1,25 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en-us">
   <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="description" content="DNSTester.js : Yet another most easy but powerful DNS tester  http://www.cnbeining.com/  ">
-
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
-    
-    <title>DNSTester.js</title>
+    <meta charset="UTF-8">
+    <title>DNSTester.js by cnbeining</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
   </head>
-
   <body>
+    <section class="page-header">
+      <h1 class="project-name">DNSTester.js</h1>
+      <h2 class="project-tagline">Yet another most easy but powerful DNS tester  http://www.cnbeining.com/  </h2>
+      <a href="https://github.com/cnbeining/DNSTester.js" class="btn">View on GitHub</a>
+      <a href="https://github.com/cnbeining/DNSTester.js/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/cnbeining/DNSTester.js/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
 
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/cnbeining/DNSTester.js">View on GitHub</a>
-
-          <h1 id="project_title">DNSTester.js</h1>
-          <h2 id="project_tagline">Yet another most easy but powerful DNS tester  http://www.cnbeining.com/  </h2>
-
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/cnbeining/DNSTester.js/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/cnbeining/DNSTester.js/tarball/master">Download this project as a tar.gz file</a>
-            </section>
-        </header>
-    </div>
-
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-        <h1>
+    <section class="main-content">
+      <h1>
 <a id="dnstesterjs" class="anchor" href="#dnstesterjs" aria-hidden="true"><span class="octicon octicon-link"></span></a>DNSTester.js</h1>
 
 <h1></h1>
@@ -44,17 +32,13 @@
 
 <p>Also check <a href="https://github.com/cnbeining/DNSTester">https://github.com/cnbeining/DNSTester</a> !</p>
 
+<p>Example page: <a href="https://gfwsuckmydick.science/Example.html">https://gfwsuckmydick.science/Example.html</a></p>
+
 <p>一个用来测试根DNS鲁棒性的JS脚本。</p>
 
 <p>基于GFW对Github的攻击而被启发。</p>
 
 <p>请看<a href="https://github.com/cnbeining/DNSTester">https://github.com/cnbeining/DNSTester</a> 。</p>
-
-<p><a href="https://gfwsuckmydick.science/Example.html">点击这里查看效果;</a> </p>
-
-<p><a href="https://cnbeining.github.io/DNSTester.js/Example.html">如果可以直接访问Github Pages，这个</a> </p>
-
-
 
 <h2>
 <a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
@@ -67,18 +51,23 @@
     &lt;script src='***' type="text/javascript"&gt;&lt;/script&gt; 
 &lt;/head&gt;
 
+My host on Cloudflare with Github Pages as backend is avalable at the very end of this page.
+
 And call with:
 
 &lt;script  type="text/javascript"&gt;
-    var DOMAIN = ".baidu.com/"; //Change to the domain you want to test
-    setTimeout("r_send2()", 1E-2); //Speed
+    var DOMAIN = ".baidu.com/"; // Change to this form
+    var MAX_COUNT = 5000; // Max time of hit
+    var TPS = 50; // Frequency
+    timegap = 1 / TPS; // Reciprocal, in case you have not finish grade 6
+    setTimeout("r_send()", timegap);
 &lt;/script&gt;
 </code></pre>
 
 <h2>
 <a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
 
-<p>GNUv2 license.</p>
+<p>GPLv2 license.</p>
 
 <p>This program is provided <strong>as is</strong>, with absolutely no warranty.</p>
 
@@ -87,6 +76,10 @@ And call with:
 <h2>
 <a id="history" class="anchor" href="#history" aria-hidden="true"><span class="octicon octicon-link"></span></a>History</h2>
 
+<p>0.0.3: Rewrite name generate; Add time control; Rewrite callback; Update Address</p>
+
+<p>0.0.2: Fix load with HTTPS</p>
+
 <p>0.0.1: The start of this.</p>
 
 <h2>
@@ -94,27 +87,34 @@ And call with:
 
 <p>欢迎提供托管。</p>
 
-<p>这里使用Github进行托管。</p>
+<p>Github:</p>
 
-<pre><code>legal disclaimer: Usage of DNSTester.js for attacking targets without prior mutual consent
+<pre><code>https://cnbeining.github.io/DNSTester.js/javascripts/dnstester.js
+https://cnbeining.github.io/DNSTester.js/javascripts/dnstester-min.js
+</code></pre>
+
+<p>Cloudflare(Github Pages as backend):</p>
+
+<pre><code>https://gfwsuckmydick.science/javascripts/dnstester.js
+https://gfwsuckmydick.science/javascripts/dnstester-min.js
+
+legal disclaimer: Usage of DNSTester.js for attacking targets without prior mutual consent
 is illegal. It is the end user's responsibility to obey all applicable local, state and
 federal laws. Developers assume no liability and are not responsible for any misuse or
 damage caused by this program
 
 ONLY USE IF YOU KNOW WHAT YOU ARE DOING.
 </code></pre>
-      </section>
-    </div>
 
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">DNSTester.js maintained by <a href="https://github.com/cnbeining">cnbeining</a></p>
-        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/cnbeining/DNSTester.js">DNSTester.js</a> is maintained by <a href="https://github.com/cnbeining">cnbeining</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
       </footer>
-    </div>
 
-    
+    </section>
 
+  
   </body>
 </html>
+
