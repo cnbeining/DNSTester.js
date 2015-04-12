@@ -1,16 +1,46 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <script src='https://gfwsuckmydick.science/javascripts/dnstester-min.js' type="text/javascript"></script> 
+	<title>DNSTester.js 演示</title>
+    <script src='./javascripts/dnstester.js' type="text/javascript"></script> 
+    <script src='./javascripts/jquery-latest.js' type="text/javascript"></script> 
 </head>
-<body>
-<script  type="text/javascript">
-    var DOMAIN = ".baidu.com/"; // Change to this form
-    var MAX_COUNT = 5000; // Max time of hit
-    var TPS = 50; // Frequency
-    timegap = 1 / TPS; // Reciprocal, in case you have not finish grade 6
-    setTimeout("r_send()", timegap);
-</script>
-
-</body>
+	<body>
+        <script  type="text/javascript">
+            function start_test()
+            {
+                var DOMAIN = document.getElementById('site').value;
+                var MAX_COUNT = parseInt(document.getElementById('max_time').value);
+                var TPS = parseInt(document.getElementById('time_per_sec').value);
+                var timegap = 1000 * (1 / TPS);
+                r_send(timegap);
+                update_id = setInterval("update_counter()", 1E3)
+            }
+            function update_counter()
+            {
+                document.getElementById("counter").innerHTML = "Count: " + COUNT.toString();
+            }
+            function stop_test()
+            {
+                console.log('STOP');
+                clearInterval(TIMERID);
+                clearInterval(update_id);
+            }
+        </script>
+        <h1>DNSTester.js 演示</h1>
+		<p>
+			为了节省资源，很简陋。请参考<a href="https://github.com/cnbeining/DNSTester.js">Github页面</a>以获取源码和<a href="https://github.com/cnbeining/DNSTester.js#misc">注意事项</a>。<br />
+			频率/秒: <input id="time_per_sec" type="text" value="50" /><br />
+			次数: <input id="max_time" type="text" value="10000" /><br />
+			网站: <input id="site" type="text" value=".baidu.com/" /><br />
+			<br />
+			点击下面的按钮开始测试：<br />
+			<button onclick="start_test()">Start</button></p>
+		<p>
+            <p id="counter"></p>
+            
+			<button onclick="stop_test()">Stop</button></p>
+		<p>
+			&nbsp;</p>
+	</body>
 </html>
