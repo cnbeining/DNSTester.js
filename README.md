@@ -64,8 +64,6 @@ jQuery is included in DNSTester.js. Check http://jquery.com/ for more details.
 History
 ----
 
-0.0.351: Fix typo that cannot stop the function
-
 0.0.35: Remove builtin jQuery, you need to refer your own one(A sample copy avalable here solely for testing); Able to pause; Rewrite timer
 
 0.0.3: Rewrite name generate; Add time control; Rewrite callback; Update Address
