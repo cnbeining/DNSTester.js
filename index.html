@@ -22,8 +22,6 @@
       <h1>
 <a id="dnstesterjs" class="anchor" href="#dnstesterjs" aria-hidden="true"><span class="octicon octicon-link"></span></a>DNSTester.js</h1>
 
-<h1></h1>
-
 <p>Yet another most easy but powerful DNS tester  <a href="http://www.cnbeining.com/">http://www.cnbeining.com/</a>  </p>
 
 <p>USE WITH YOUR OWN RISK!</p>
@@ -32,36 +30,44 @@
 
 <p>Also check <a href="https://github.com/cnbeining/DNSTester">https://github.com/cnbeining/DNSTester</a> !</p>
 
-<p>Example page: <a href="https://gfwsuckmydick.science/Example.html">https://gfwsuckmydick.science/Example.html</a></p>
+<p>Example: <a href="https://cnbeining.github.io/DNSTester.js/Example.html">https://cnbeining.github.io/DNSTester.js/Example.html</a></p>
 
-<p>一个用来测试根DNS鲁棒性的JS脚本。</p>
+<p>一个用来测试权威DNS鲁棒性的JS脚本。</p>
 
 <p>基于GFW对Github的攻击而被启发。</p>
 
 <p>请看<a href="https://github.com/cnbeining/DNSTester">https://github.com/cnbeining/DNSTester</a> 。</p>
+
+<p>演示: <a href="https://cnbeining.github.io/DNSTester.js/Example.html">https://cnbeining.github.io/DNSTester.js/Example.html</a></p>
 
 <h2>
 <a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
 
 <p>Simple.</p>
 
-<pre><code>Include this file in your head:
+<pre><code>Include this file and jQuery in your head:
+文件头带上本文件和jQuery：
 
 &lt;head&gt;
-    &lt;script src='***' type="text/javascript"&gt;&lt;/script&gt; 
+&lt;script src='./dnstester-min.js' type="text/javascript"&gt;&lt;/script&gt; 
+&lt;script src='./jquery-latest.js' type="text/javascript"&gt;&lt;/script&gt; 
 &lt;/head&gt;
 
 My host on Cloudflare with Github Pages as backend is avalable at the very end of this page.
+我有一个Cloudflare做前端Github Pages做后端的host版本，页面最下面。
 
 And call with:
+这么用：
 
 &lt;script  type="text/javascript"&gt;
     var DOMAIN = ".baidu.com/"; // Change to this form
     var MAX_COUNT = 5000; // Max time of hit
     var TPS = 50; // Frequency
     timegap = 1 / TPS; // Reciprocal, in case you have not finish grade 6
-    setTimeout("r_send()", timegap);
+    r_send(timegap);
 &lt;/script&gt;
+
+死活看不懂？看Example.html .
 </code></pre>
 
 <h2>
@@ -73,8 +79,12 @@ And call with:
 
 <p>jQuery is included in DNSTester.js. Check <a href="http://jquery.com/">http://jquery.com/</a> for more details.</p>
 
+<p>未经允许，禁止转载到大陆服务。</p>
+
 <h2>
 <a id="history" class="anchor" href="#history" aria-hidden="true"><span class="octicon octicon-link"></span></a>History</h2>
+
+<p>0.0.35: Remove builtin jQuery, you need to refer your own one(A sample copy avalable here solely for testing); Able to pause; Rewrite timer</p>
 
 <p>0.0.3: Rewrite name generate; Add time control; Rewrite callback; Update Address</p>
 
